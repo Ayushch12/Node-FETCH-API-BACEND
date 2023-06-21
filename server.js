@@ -47,7 +47,20 @@ app.post('/products', async (req, res) => {
     }
   });
 
+//Delect the product
 
+app.delete('/products/:id', async (req, res) => {
+    try {
+      const { id } = req.params;
+      const product = await Product.findByIdAndDelete(id);
+      if (!product) {
+        return res.status(404).json({ message: `Cannot find the product with ID ${id}` });
+      }
+      res.status(200).json();
+    } catch (error) {
+      res.status(500).json({ message: error.message });
+    }
+  });
 
 
 
