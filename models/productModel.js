@@ -1,18 +1,19 @@
+//Importation of Mongoose:
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
   _id: {
     type: Number,
     required: true,
-    default: 0
+
   },
   name: {
     type: String,
-    required: [true, 'Please enter a product name']
+    required: [true, 'Veuillez entrer un nom de produit']
   },
   type: {
     type: String,
-    required: [true, 'Please enter a product type']
+    required: [true, 'Veuillez entrer un nom de produit']
   },
   price: {
     type: Number,
@@ -32,6 +33,7 @@ const productSchema = new mongoose.Schema({
   }
 });
 
+//Exporting productSchema :
 const Product = mongoose.model('Product', productSchema);
 
 module.exports = Product;
