@@ -1,5 +1,7 @@
 
-const jwt = require('jsonwebtoken');
+//const jwt = require('jsonwebtoken');
+const { secretKey } = require('./config');
+
 
 // Middleware to authenticate token
 function authenticateToken(req, res, next) {
@@ -10,7 +12,8 @@ function authenticateToken(req, res, next) {
     return res.status(401).json({ message: 'Authentication required' });
   }
 
-  jwt.verify(token, 'your-secret-key', (err, user) => {
+  //jwt.verify(token, 'your-secret-key', (err, user) => {
+    jwt.verify(token, secretKey, (err, user) => {
     if (err) {
       return res.status(403).json({ message: 'Invalid token' });
     }

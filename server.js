@@ -50,7 +50,7 @@ const store = createStore(() => {}, applyMiddleware(thunkMiddleware));
 // Socket.io configuration:
 io.use((socket, next) => {
   if (socket.handshake.query && socket.handshake.query.token) {
-    jwt.verify(socket.handshake.query.token, 'your-secret-key', (err, decoded) => {
+    jwt.verify(socket.handshake.query.token, ' secretKey', (err, decoded) => {
       if (err) return next(new Error('Authentication error'));
       socket.decoded = decoded;
       next();
